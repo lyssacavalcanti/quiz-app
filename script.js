@@ -1,5 +1,12 @@
 const quizData = [
     {
+        question: 'Quais as cores da reciclagem do papel, do vidro, do metal e do plástico, respectivamente?',
+        a: 'Vermelho, amarelo, verde e azul',
+        b: 'Verde, vermelho, azul e amarelo',
+        c: 'Amarelo, azul, vermelho e verde',
+        d: 'Azul, verde, amarelo e vermelho',
+        correct: 'd'
+    }, {
         question: 'Quantos habitantes existem no mundo em 2020?',
         a: '5 Bi',
         b: '7 Bi',
@@ -21,11 +28,11 @@ const quizData = [
         d: 'Urano, Mercúrio, Netuno, Júpiter, Marte, Vênus, Saturno e Terra',
         correct: 'a'
     }, {
-        question: 'Quais as cores da reciclagem do papel, do vidro, do metal e do plástico, respectivamente?',
-        a: 'Vermelho, amarelo, verde e azul',
-        b: 'Verde, vermelho, azul e amarelo',
-        c: 'Amarelo, azul, vermelho e verde',
-        d: 'Azul, verde, amarelo e vermelho',
-        correct: 'd'
-    }
+        question: 'Qual o termo usado para designar os alimentos geneticamente modificados?',
+        b: 'Genéricos',
+        a: 'Transgênicos',
+        c: 'Hidrogenados',
+        d: 'Transdérmicos',
+        correct: 'b'
+    }, 
 ]
