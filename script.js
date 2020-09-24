@@ -29,27 +29,76 @@ const quizData = [
         correct: 'a'
     }, {
         question: 'Qual o termo usado para designar os alimentos geneticamente modificados?',
-        b: 'Genéricos',
         a: 'Transgênicos',
+        b: 'Genéricos',
         c: 'Hidrogenados',
         d: 'Transdérmicos',
         correct: 'b'
     }, 
-]
+];
 
-const questionEl = document.getElementById('question');
+const quiz = document.getElementById("quiz");
+const answerEls = document.querySelectorAll(".answer");
+const questionEl = document.getElementById("question");
+const a_text = document.getElementById("a_text");
+const b_text = document.getElementById("b_text");
+const c_text = document.getElementById("c_text");
+const d_text = document.getElementById("d_text");
+const submitBtn = document.getElementById("submit");
 
-const a_text = document.getElementById('a_text');
-const b_text = document.getElementById('b_text');
-const c_text = document.getElementById('c_text');
-const d_text = document.getElementById('d_text');
-const e_text = document.getElementById('e_text');
-
-let currentQuestion = 0;
+let currentQuiz = 0;
+let score = 0;
 
 loadQuiz();
 
 function loadQuiz() {
+    deselectAnswers();
 
-    currentQuestion++
+    const currentQuizData = quizData[currentQuiz];
+
+    questionEl.innerText = currentQuizData.question;
+    a_text.innerText = currentQuizData.a;
+    b_text.innerText = currentQuizData.b;
+    c_text.innerText = currentQuizData.c;
+    d_text.innerText = currentQuizData.d;
 }
+
+function getSelected() {
+    let answer = undefined;
+
+    answerEls.forEach((answerEl) => {
+        if (answerEl.checked) {
+            answer = answerEl.id;
+        }
+    });
+
+    return answer;
+}
+
+function deselectAnswers() {
+    answerEls.forEach((answerEl) => {
+        answerEl.checked = false;
+    });
+}
+
+submitBtn.addEventListener("click", () => {
+    // check to see the answer
+    const answer = getSelected();
+
+    if (answer) {
+        if (answer === quizData[currentQuiz].correct) {
+            score++;
+        }
+
+        currentQuiz++;
+        if (currentQuiz < quizData.length) {
+            loadQuiz();
+        } else {
+            quiz.innerHTML = `
+                <h2>Você respondeu ${score} de ${quizData.length} questões corretamente.</h2>
+                
+                <button onclick="location.reload()">Jogar de novo</button>
+            `;
+        }
+    }
+});
